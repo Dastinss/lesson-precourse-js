@@ -1,6 +1,6 @@
 
 export function renderPlaylistTrack(inputTrackForRendering) {
-	const trackElement = document.createElement('div');
+	const trackElement = document.createElement('div', );
 
 	const trackTitleElement = document.createElement('div');
 
