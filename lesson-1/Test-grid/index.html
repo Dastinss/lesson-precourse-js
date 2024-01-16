@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(4, 100px);
+            gap: 5px;
+            width: 420px;
+            height: 420px;
+            margin: 20px auto;
+            border: 2px solid #000;
+        }
+
+        #player {
+            width: 100%;
+            height: 100%;
+            background-color: red;
+        }
+    </style>
+    <title>Grid Movement</title>
+</head>
+<body>
+<div id="grid-container">
+    <div id="player"></div>
+</div>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const player = document.getElementById("player");
+		let positionX = 0;
+		let positionY = 0;
+
+		document.addEventListener("keydown", function (event) {
+			// Обработка клавиш для движения
+			switch (event.key) {
+				case "ArrowUp":
+					positionY = (positionY - 1 + 4) % 4;
+					break;
+				case "ArrowDown":
+					positionY = (positionY + 1) % 4;
+					break;
+				case "ArrowLeft":
+					positionX = (positionX - 1 + 4) % 4;
+					break;
+				case "ArrowRight":
+					positionX = (positionX + 1) % 4;
+					break;
+			}
+
+			// Обновление позиции игрока
+			updatePlayerPosition();
+		});
+
+		function updatePlayerPosition() {
+			player.style.gridColumn = positionX + 1;
+			player.style.gridRow = positionY + 1;
+		}
+	});
+</script>
+</body>
+</html>
